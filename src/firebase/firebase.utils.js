@@ -5,7 +5,7 @@ import 'firebase/auth';
 
 const config = {
 	apiKey: "AIzaSyBelRKrbw0HOIy-i-1qc7H4uSx9GCKV15Q",
-		authDomain: "rmr-crwn-clothing.firebaseapp.com",
+	authDomain: "rmr-crwn-clothing.firebaseapp.com",
 	databaseURL: "https://rmr-crwn-clothing.firebaseio.com",
 	projectId: "rmr-crwn-clothing",
 	storageBucket: "rmr-crwn-clothing.appspot.com",
@@ -21,14 +21,13 @@ export const createUserProfileDocument = async ( userAuth, additionalData ) => {
 	const snapShot = await userRef.get();
 
 	if ( !snapShot.exists ) {
-		const { displayName, email, photoURL } = userAuth;
+		const { displayName, email } = userAuth;
 		const createdAt = new Date();
 
 		try {
 			await userRef.set( {
 				displayName,
 				email,
-				photoURL,
 				createdAt,
 				...additionalData,
 			} )
